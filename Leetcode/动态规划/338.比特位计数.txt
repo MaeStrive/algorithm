@@ -1,0 +1,24 @@
+class Solution {
+public:
+
+    int count(int i){
+        int r=0;
+        while(i>0){
+            //二进制 运算
+            //最低位与1 相与
+            if(i&1){
+                r++;
+            }
+            //i右移一位
+            i=i>>1;
+        }
+        return r;
+    }
+    vector<int> countBits(int n) {
+        vector<int> v;
+        for(int i=0;i<=n;i++){
+            v.push_back(count(i));
+        }
+        return v;
+    }
+};

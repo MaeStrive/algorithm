@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        //截止到nums[i](必须包括nums[i])为止的子数组和的最大值
+        int b=0;
+        //保存子数组和的最大值
+        int sum=0;
+        //保存最大值
+        int max_0=0xc0c0c0c0;
+        for(int i=0;i<nums.size();i++){
+            if(b>0){
+                b+=nums[i];
+            }else{
+                b=nums[i];
+            }
+            if(nums[i]>max_0)
+                max_0=nums[i];
+            if(sum<b)
+                sum=b;
+        }
+        if(sum<=0)
+            return max_0;
+        return sum;
+    }
+};

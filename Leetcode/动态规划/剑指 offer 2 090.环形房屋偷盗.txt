@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int rob_dp(int dp[],vector<int>& nums,int start,int end,int n){
+        for(int i=start;i<end;i++){
+            dp[i]=max(dp[(i+n-1)%n],dp[(n+i-2)%n]+nums[i]);
+        }
+        return dp[end-1];
+    }
+    int rob(vector<int>& nums) {
+        if(nums.empty()) return 0;
+        int n=nums.size();
+        if(n==1){
+            return nums[0];
+        }
+        int dp1[105]={0},dp2[105]={0};
+        return max(rob_dp(dp1,nums,0,n-1,n),rob_dp(dp2,nums,1,n,n));   
+    }
+};

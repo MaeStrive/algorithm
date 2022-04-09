@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        if(nums.size()==0)
+            return 0;
+        //以第i个结尾的最大连续和
+        int dp[10500000]={0};
+        dp[0]=nums[0];
+        int sum=dp[0];
+        for(int i=1;i<nums.size();i++){
+            dp[i]=max(nums[i],nums[i]+dp[i-1]);
+            if(dp[i]>sum)
+                sum=dp[i];
+        }
+        return sum;
+    }
+};

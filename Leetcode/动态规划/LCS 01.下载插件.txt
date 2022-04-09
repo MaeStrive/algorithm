@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int leastMinutes(int n) {
+        int i=1,time=1;
+        while(i<n){
+            time++;
+            i=i*2;
+        }
+        return time;
+    }
+};

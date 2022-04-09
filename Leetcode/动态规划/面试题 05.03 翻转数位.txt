@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int reverseBits(int num) {
+        //l 记录位数
+        //k 记录当前是否可将0变为1
+        int l=0,sum=0,k=0,f=0,max_len=0;
+        while(l<32){
+            //当前位等于1
+            if(num&1==1){
+                sum++;
+            //当前位等于0 但是可以将该0位转成1
+            }else if(k==0){
+                f=l;
+                k++;
+                sum++;
+            //当前位为0 不能够转成1了,
+            }else{
+                //更改当前最大值
+                sum=l-f;
+                f=l;
+            }
+            //更新最大值
+            if(sum>max_len){
+                max_len=sum;
+            }
+            l++;
+            num>>=1;
+        }
+        return max_len;
+    }
+};

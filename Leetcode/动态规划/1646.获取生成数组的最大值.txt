@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int getMaximumGenerated(int n) {
+        if(n==0)
+            return 0;
+        int nums[2*100+1000]={0},max_num=1;
+        nums[0]=0;nums[1]=1;
+        int i=2;
+        while(i<=n){
+            if(i%2==0){
+                nums[i]=nums[i/2];
+            }else{
+                nums[i]=nums[i/2]+nums[i/2+1];
+            }
+            if(nums[i]>max_num||nums[i+1]>max_num)
+                max_num=max(nums[i],nums[i+1]);
+            i++;
+        }
+        return max_num;
+    }
+};

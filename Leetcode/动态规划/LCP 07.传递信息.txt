@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int numWays(int n, vector<vector<int>>& relation, int k) {
+        int sum=0;
+        int dp[105]={0};
+        dp[0]=1;
+        for(int i=1;i<=k;i++){
+          for(int j=0;j<relation.size();j++){
+              dp[i][relation[j][1]]+=dp[i-1][relation[j][0]];
+          }
+        }
+        return dp[k][n-1];
+    }
+
+};
