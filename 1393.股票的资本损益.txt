@@ -1,0 +1,4 @@
+select s.stock_name,
+    sum(if(s.operation='Buy',-price,price)) as capital_gain_loss
+from Stocks s
+group by s.stock_name
